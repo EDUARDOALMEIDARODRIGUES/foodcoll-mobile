@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /// Estrutura base reutilizável das telas do app.
 
 /// Define o conteúdo da página e a navegação inferior padrão.
-class BasePage extends StatefulWidget { 
+class BasePage extends StatefulWidget {
   final Widget body;
   final String title;
   final int currentIndex;
@@ -33,17 +33,31 @@ class _BasePageState extends State<BasePage> {
   @override
   void initState() {
     super.initState();
-    _selectedIndex = widget.currentIndex; // Define qual item da navegação começa selecionado
+    _selectedIndex =
+        widget.currentIndex; // Define qual item da navegação começa selecionado
   }
 
   /// Atualiza o item selecionado e executa a navegação, se houver callback.
   void _onItemTapped(int index) {
+    if (_selectedIndex == index) return; // evita recarregar a mesma tela
+
     setState(() {
       _selectedIndex = index;
     });
 
-    if (widget.onTabChanged != null) {
-      widget.onTabChanged!(index);
+    switch (index) {
+      case 0:
+        Navigator.pushReplacementNamed(context, '/home');
+        break;
+      case 1:
+        Navigator.pushReplacementNamed(context, '/search');
+        break;
+      case 2:
+        Navigator.pushReplacementNamed(context, '/favorites');
+        break;
+      case 3:
+        Navigator.pushReplacementNamed(context, '/settings');
+        break;
     }
   }
 
@@ -63,11 +77,7 @@ class _BasePageState extends State<BasePage> {
 
       // Área principal da tela com espaçamento padrão do app
       body: Padding(
-        padding: const EdgeInsets.only(
-          top: 40,
-          left: 16,
-          right: 16,
-        ),
+        padding: const EdgeInsets.only(top: 40, left: 16, right: 16),
         child: widget.body,
       ),
 
