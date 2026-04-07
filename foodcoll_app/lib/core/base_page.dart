@@ -37,7 +37,7 @@ class _BasePageState extends State<BasePage> {
         widget.currentIndex; // Define qual item da navegação começa selecionado
   }
 
-  /// Atualiza o item selecionado e executa a navegação, se houver callback.
+  /// Atualiza o item selecionado e executa a navegação.
   void _onItemTapped(int index) {
     if (_selectedIndex == index) return; // evita recarregar a mesma tela
 
@@ -76,41 +76,43 @@ class _BasePageState extends State<BasePage> {
       backgroundColor: Colors.white,
 
       // Área principal da tela com espaçamento padrão do app
-      body: Padding(
-        padding: const EdgeInsets.only(top: 40, left: 16, right: 16),
-        child: widget.body,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(
+            top: 40,
+            left: 16,
+            right: 16,
+            bottom: 16,
+          ),
+          child: widget.body,
+        ),
       ),
 
       // Barra de navegação inferior padrão
-      bottomNavigationBar: SizedBox(
-        height: 80,
-        child: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          selectedLabelStyle: TextStyle(
-            fontSize: labelFontSize,
-            fontFamily: 'Inter',
-            color: iconHoverColor,
-            height: 1.5,
-          ),
-          unselectedLabelStyle: TextStyle(
-            fontSize: labelFontSize,
-            fontFamily: 'Inter',
-            color: iconColor,
-            height: 1.5,
-          ),
-          type: BottomNavigationBarType.fixed,
-          iconSize: iconSize,
-          items: [
-            _buildNavItem(Icons.home, 'Home'),
-            _buildNavItem(Icons.search, 'Buscar'),
-            _buildNavItem(Icons.star, 'Favoritos'),
-            _buildNavItem(Icons.settings, 'Configurações'),
-          ],
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        selectedLabelStyle: TextStyle(
+          fontSize: labelFontSize,
+          fontFamily: 'Inter',
+          color: iconHoverColor,
         ),
+        unselectedLabelStyle: TextStyle(
+          fontSize: labelFontSize,
+          fontFamily: 'Inter',
+          color: iconColor,
+        ),
+        type: BottomNavigationBarType.fixed,
+        iconSize: iconSize,
+        items: [
+          _buildNavItem(Icons.home, 'Home'),
+          _buildNavItem(Icons.search, 'Buscar'),
+          _buildNavItem(Icons.star, 'Favoritos'),
+          _buildNavItem(Icons.settings, 'Configurações'),
+        ],
       ),
     );
   }
