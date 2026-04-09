@@ -1,14 +1,5 @@
 import { collColocacoes, collUser, client } from "../config/db.js";
 
-export async function insererirHistoricoDB(doc) {
-  await client.connect();
-  collUser.insertOne({
-    historico_buscas:{
-      termo: doc,
-    }
-  });
-}
-
 export async function mostrarHistorico() {
   try {
     await client.connect();
@@ -16,19 +7,6 @@ export async function mostrarHistorico() {
 
     const acheHistorico = {_id:0, historico_buscas:{termo: 1}};
     return await collUser.find().project(acheHistorico).toArray();
-  } finally {
-    client.close();
-  }
-}
-
-export async function inserirFavorito(doc) {
-  try {
-    await client.connect();
-    collUser.insertOne({
-      favoritos:{
-        termo: doc,
-      }
-    });
   } finally {
     client.close();
   }
