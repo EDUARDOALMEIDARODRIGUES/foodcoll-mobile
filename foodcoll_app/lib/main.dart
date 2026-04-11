@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodcoll_app/features/collocations/presentation/pages/collocations_page.dart';
 import 'features/home/presentation/pages/home_page.dart';
 import 'features/search/presentation/pages/search_page.dart';
 import 'features/favorites/presentation/pages/favorites_page.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         '/search': (_) => const SearchPage(),
         '/favorites': (_) => const FavoritesPage(),
         '/settings': (_) => const SettingsPage(),
+        '/collocations': (_) => const CollocationsPage(),
       },
     );
   }
