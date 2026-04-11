@@ -12,10 +12,10 @@ class SettingsPage extends StatelessWidget {
       title: 'Configurações',
       currentIndex: 3,
       body: Column(
+        spacing: 30,
         children: [
           PageHeader(title: "Configurações", onBack: () => true),
           ListView(
-            // adicionar espaço entre o listview e o header
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             children: [
@@ -36,7 +36,12 @@ class SettingsPage extends StatelessWidget {
                 title: Center(child: Text("Tamanho da fonte")),
                 trailing: DropdownButton<String>(
                   //Personalizar o dropdownbutton
-                  value: "P",
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_sharp,
+                    color: Color(0xFFA8D5D4),
+                  ),
+                  hint: Text("p", style: TextStyle(color: Color(0xFFA8D5D4))),
+                  underline: SizedBox(),
                   items: [],
                   onChanged: (value) {},
                 ),
