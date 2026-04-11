@@ -30,7 +30,7 @@ class CollocationsPage extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column( crossAxisAlignment: CrossAxisAlignment.start, spacing: 12, children: [Text("/'Pronuncia/",style: TextStyle(fontSize: 16,color: Color(0xFF4A4F55))), Text("Tradução",style: TextStyle(fontSize: 16,color: Color(0xFF4A4F55)))]),
+            child: Column( crossAxisAlignment: CrossAxisAlignment.start, spacing: 12, children: [Text("/'Pronuncia/",style: TextStyle(fontSize: 16,color: Color(0xFF4A4F55))), Text("Tradução",style: TextStyle(fontSize: 16,color: Color.fromARGB(255, 0, 0, 0)))]),
           ),
           Column(
             spacing: 12,
