@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodcoll_app/shared/widgets/page_header.dart';
 import '../../../../core/base_page.dart';
 
 class FavoritesPage extends StatelessWidget {
@@ -6,10 +7,12 @@ class FavoritesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const BasePage(
+    return BasePage(
       title: 'Favoritos',
       currentIndex: 2,
-      body: SizedBox.shrink(),
+      body: Column(
+        children: [PageHeader(title: "Meus Favoritos", onBack: () => true)],
+      ),
     );
   }
 }
